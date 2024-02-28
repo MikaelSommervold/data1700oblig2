@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <script src="kinobilletter.js"></script>
+    <title>Kinobilletter</title>
+    <style>
+        /* Style for the ticket table/table under Alle Billetter */
+        /* Style for table header cells */
+        .ticket-table th {
+            border: 1px solid #000000;
+            padding: 8px;
+            text-align: left;
+            background-color: #f2f2f2;
+        }
+
+        /* Style for table data cells */
+        .ticket-table td {
+            border: 1px solid #000000;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<h1>Bestilling av kinobilletter</h1>
+<!--Submit form for all input fields-->
+<form id ="bestilling" onsubmit="submitForm(); return false">
+    <!--Dropdown menu for selecting a movie-->
+    <label for="film">Velg film:</label>
+    <select name="film" id="film" required>
+        <!--Non-clickable option that is hidden when selected so the dropdown displays that instead of the first movie on the list-->
+        <option hidden disabled selected value>Velg film her</option>
+        <option value="American Fiction">American Fiction</option>
+        <option value="Anatomy of a Fall">Anatomy of a Fall</option>
+        <option value="Barbie">Barbie</option>
+        <option value="The Holdovers">The Holdovers</option>
+        <option value="Killers of the Flower Moon">Killers of the Flower Moon</option>
+        <option value="Maestro">Maestro</option>
+        <option value="Oppenheimer">Oppenheimer</option>
+        <option value="Past Lives">Past Lives</option>
+        <option value="Poor Things">Poor Things</option>
+        <option value="The Zone of Interest">The Zone of Interest</option>
+    </select>
+    <br><br>
+    <!--All remaining input fields with their own type, required and pattern as well as a error response -->
+    <label for="antall">Antall:</label><br>
+    <input type="number" id="antall" name="antall" min="1" max="100" required><br> <!--The hypothetical cinema has a total of 100 seats as such the number of tickets that can be ordered at once is less than 100, but more than 0-->
+    <label for="fornavn">Fornavn:</label><br>
+    <input type="text" id="fornavn" name="fornavn" min="1" max="255" required><br>
+    <label for="etternavn">Etternavn:</label><br>
+    <input type="text" id="etternavn" name="etternavn" min="1" max="255" required><br>
+    <label for="telefon">Telefonnr:</label><br>
+    <input type="tel" id="telefon" name="telefon"><br> <!--removed required code and replaced it with regex in javascript-->
+    <label for="epost">Epost:</label><br>
+    <input type="email" id="epost" name="epost"><br><br> <!--removed required code and replaced it with regex in javascript-->
+    <input type="submit" value="Kjøp Billett">
+</form>
+
+<h2>Alle Billetter</h2>
+
+<div id="ticketsContainer"></div>
+<!--This is where the table with the input array goes-->
+<br>
+<button onclick="slettAlle()">Slett alle billettene</button>
+<!--Clicking this button executes the slettAlle script, deleting the values in the array-->
+
+
+</body>
+</html>
